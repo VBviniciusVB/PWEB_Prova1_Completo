@@ -1,0 +1,31 @@
+<p-toast></p-toast>
+
+<div class="container">
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+        <div class="ui-g">
+
+            <div class="ui-g-12">
+              <h1>{{editando?'Edição de ': 'Cadastrar novo '}} estado</h1>
+            </div>
+
+            <div class="ui-g-12 ui-md-9 ui-fluid">
+              <label>Nome do estado :</label>
+              <input pInputText type="text" name="nome"
+                [(ngModel)]="estado.nome"
+                pattern="[a-zA-Z ]+"
+                #nome="ngModel" required minlength="3">
+
+                <div *ngIf="nome.hasError('required') && nome.touched">Escreva o nome do estado</div>
+                <div *ngIf="nome.hasError('pattern')" class="div-yellow" >O nome só pode conter letras do alfabeto</div>
+                <div *ngIf="nome.hasError('minlength')" class="div-yellow" >O nome deve ter no mínimo 3 letras</div>
+            </div>
+
+            <div class="ui-g-12">
+                <button pButton type="submit" class="button-green" label="Cadastrar" [disabled]="f.invalid" ></button>
+                <button pButton type="button" class="button-blue" label="Novo" routerLink="/estados/novo"></button>
+                <a routerLink="/estados"> Voltar</a>
+            </div>
+
+        </div>
+    </form>
+</div>

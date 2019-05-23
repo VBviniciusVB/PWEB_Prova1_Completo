@@ -1,0 +1,29 @@
+<p-toast></p-toast>
+
+<div class="container">
+    <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+        <div class="ui-g">
+
+            <div class="ui-g-12">
+              <h1>{{editando?'Edição de ': 'Cadastrar nova '}} categoria</h1>
+            </div>
+
+            <div class="ui-g-12 ui-md-9 ui-fluid">
+              <label>Nome da categoria :</label>
+              <input pInputText type="text" name="nome"
+                [(ngModel)]="categoria.nome"
+                #nome="ngModel" required minlength="3">
+
+                <div *ngIf="nome.hasError('required') && nome.touched">Escreva o nome da categoria</div>
+                <div *ngIf="nome.hasError('minlength')" class="div-yellow" >O nome deve ter no mínimo 3 letras</div>
+            </div>
+
+            <div class="ui-g-12">
+                <button pButton type="submit" class="button-green" label="Cadastrar" [disabled]="f.invalid" ></button>
+                <button pButton type="button" class="button-blue" label="Novo" routerLink="/categorias/novo"></button>
+                <a routerLink="/categorias"> Voltar</a>
+            </div>
+
+        </div>
+    </form>
+</div>

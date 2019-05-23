@@ -1,0 +1,13 @@
+input.ng-invalid.ng-touched, select.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+.ui-button.button-green {
+  background-color: green;
+  border: green;
+  margin-right: 10px;
+}
+
+.ui-button.button-blue {
+  margin-right: 10px;
+}
